@@ -53,8 +53,4 @@ src/
 └── __tests__/      # Test files
 ```
 
-## Deployment
 
-This project is configured for one-click deployment on [Vercel](https://vercel.com).
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/YOUR_USERNAME/product-comparison)
