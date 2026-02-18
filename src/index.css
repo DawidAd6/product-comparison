@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #2a2a2a;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3a3a3a;
+  }
+}
+
+@layer components {
+  .spec-row-enter {
+    animation: slide-in-right 0.3s ease-out both;
+  }
+
+  .product-card-enter {
+    animation: slide-in-right 0.25s ease-out both;
+  }
+
+  .rail-item-enter {
+    animation: slide-in-right 0.2s ease-out both;
+  }
+
+  .empty-state-border {
+    animation: pulse-border 2s ease-in-out infinite;
+  }
+
+  .skeleton-pulse {
+    animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-border {
+  0%,
+  100% {
+    border-color: #c8ff00;
+    opacity: 0.6;
+  }
+  50% {
+    border-color: #c8ff00;
+    opacity: 1;
+  }
+}
+
+@keyframes skeleton-shimmer {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.15;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* #9 — Cell highlight flash on winner/loser change */
+.cell-best-flash {
+  animation: flash-best 0.5s ease-out both;
+}
+
+.cell-worst-flash {
+  animation: flash-worst 0.5s ease-out both;
+}
+
+@keyframes flash-best {
+  0% { background-color: rgba(34, 197, 94, 0.35); }
+  100% { background-color: transparent; }
+}
+
+@keyframes flash-worst {
+  0% { background-color: rgba(239, 68, 68, 0.35); }
+  100% { background-color: transparent; }
+}
+
+/* #6 — Print styles */
+@media print {
+  body {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .print\:hidden,
+  header ~ div > section > div:last-child, /* ProductSelector */
+  button[aria-label*="Remove"],
+  button[aria-label*="Clear"] {
+    display: none !important;
+  }
+
+  header {
+    position: static;
+    border-bottom: 1px solid #ccc;
+    background: #fff;
+    backdrop-filter: none;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 6px 10px;
+    color: #000;
+    background: #fff !important;
+  }
+
+  thead tr {
+    position: static;
+    background: #f5f5f5 !important;
+  }
+
+  .text-accent { color: #5a7a00 !important; }
+  .text-better { color: #166534 !important; }
+  .text-worse  { color: #991b1b !important; }
+}
+
+@media (prefers-contrast: high) {
+  :root {
+    --border-high: #ffffff;
+  }
+
+  .border-border {
+    border-color: #888888;
+  }
+
+  .text-text-muted {
+    color: #aaaaaa;
+  }
+
+  .bg-diff-bg {
+    background-color: rgba(200, 255, 0, 0.15);
+  }
+}
