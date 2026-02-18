@@ -2,6 +2,8 @@
 
 An interactive product comparison tool built with React, TypeScript, Tailwind CSS, and Zustand.
 
+🔗 **Live demo:** [product-comparison](https://product-comparison-brown.vercel.app/)
+
 ## Features
 
 - Compare up to 4 products side-by-side
